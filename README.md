@@ -1,19 +1,30 @@
 # Foodstore Mobile App
 
-React Native mobile app for Foodstore, built with Expo SDK 54.
+Flutter mobile app for Foodstore.
 
 ## Tech Stack
 
-| Kategori | Library |
+| Kategori | Package |
 |---|---|
-| Framework | Expo SDK 54 + TypeScript |
-| Navigation | React Navigation (Native Stack) |
-| HTTP Client | Axios + JWT interceptor |
-| Server State | TanStack Query (cache, refetch, mutation) |
-| UI State | Zustand (auth, theme) |
-| Form | React Hook Form + Zod |
-| Storage | expo-secure-store (native) / localStorage (web) |
-| Search | use-debounce |
+| Framework | Flutter + Dart |
+| Navigation | go_router (+ deep linking) |
+| HTTP Client | dio + interceptor JWT |
+| State Management | flutter_riverpod (auth, cart, tema, wishlist) |
+| Form & Validasi | reactive_forms |
+| Storage (secure) | flutter_secure_storage (token) |
+| Storage (umum) | shared_preferences (search history, tema) |
+| Cache Gambar | cached_network_image |
+| Biometric | local_auth |
+| Google Sign-In | google_sign_in |
+| Image Picker | image_picker |
+| WebView (Midtrans) | webview_flutter |
+| Carousel | carousel_slider |
+| Skeleton/Shimmer | shimmer |
+| Infinite Scroll | infinite_scroll_pagination |
+| Realtime | pusher_channels_flutter |
+| Push Notifikasi | firebase_messaging + flutter_local_notifications |
+| Konektivitas | connectivity_plus |
+| Debounce | rxdart |
 
 ## Backend
 
