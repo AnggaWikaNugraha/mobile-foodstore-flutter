@@ -41,8 +41,8 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 - [ ] Auto login — cek token saat buka app, redirect otomatis
 - [ ] Logout
 - [ ] Guest mode — beranda bisa diakses tanpa login
-- [ ] Biometric auth (`expo-local-authentication`) — fingerprint / Face ID setiap buka app & kembali dari background (`AppState`); cache tetap ada, hanya auth gate yang di-reset
-- [ ] Google Sign-In native (`@react-native-google-signin/google-signin`) — OAuth native flow, butuh endpoint `POST /auth/google/mobile` di backend
+- [ ] Biometric auth — fingerprint / Face ID setiap buka app & kembali dari background; cache tetap ada, hanya auth gate yang di-reset
+- [ ] Google Sign-In native — OAuth native flow, butuh endpoint `POST /auth/google/mobile` di backend
 
 **Home**
 
@@ -89,14 +89,16 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 - [ ] Tombol "Konfirmasi Diterima" saat status `in_delivery`
 - [ ] Tombol "Beri Rating" per item saat status `delivered`
 - [ ] Info pengiriman (alamat), info pembayaran (nama + email user), item pesanan, ringkasan harga
-- [ ] Auto-refetch status setiap 10 detik (sementara sebelum Pusher)
-- [ ] Tracking status order realtime — ganti polling 10s dengan Pusher (`private-order-<id>`, event `order:status_updated`)
+
+**Realtime & Notifikasi**
+
+- [ ] FCM push notification — status order update dikirim dari backend, diterima di foreground, background, dan terminated; tap notif langsung navigate ke InvoiceScreen
 
 **Profile**
 
 - [ ] Biodata diri (nama, email, role, customer ID, login via Google)
 - [ ] Ganti tema warna (Green Fern, Green Jade, Merah, Biru, Orange)
-- [ ] Image picker untuk avatar profile — `expo-image-picker`, kamera + galeri, upload ke `PUT /api/users/avatar` (Cloudinary), foto langsung update di hero section
+- [ ] Image picker untuk avatar profile — kamera + galeri, upload ke `PUT /api/users/avatar` (Cloudinary), foto langsung update di hero section
 
 **Riwayat Belanja**
 
@@ -109,9 +111,9 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 **Tema**
 
 - [ ] Multi-tema — Green Fern, Green Jade, Merah, Biru, Orange
-- [ ] Token warna terpusat di `src/constants/themes.ts`
+- [ ] Token warna terpusat di constants/themes.dart
 - [ ] Ganti tema dari Profile → tab Keamanan
-- [ ] Dark mode — theme system sudah ada, tambah variant `dark` per token warna
+- [ ] Dark mode — tambah variant `dark` per token warna
 
 **Wishlist**
 
@@ -129,16 +131,16 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 - [ ] Gambar produk full-width, nama, harga, kategori, tags, deskripsi, stok
 - [ ] Tombol "Tambah ke Keranjang" dengan loading state & disable saat stok habis / penuh
 - [ ] Toggle wishlist (hati) di header detail screen dengan loading state
-- [ ] Fetch via `GET /api/products?q=name` — filter by `_id` (tidak ada endpoint detail tersendiri)
+- [ ] Fetch via `GET /api/products?q=name` — filter by `_id`
 
 **Review Produk**
 
 - [ ] Tombol "Beri Rating" per item di InvoiceScreen saat status `delivered`
 - [ ] Bottom sheet modal: star rating 1–5 (tap), kolom komentar, label rating (Sangat Buruk–Sangat Bagus)
 - [ ] Submit via `POST /api/reviews { product_id, order_id, rating, comment }`
-- [ ] Error inline di modal (kotak merah) — termasuk pesan duplikat dari backend
+- [ ] Error inline di modal — termasuk pesan duplikat dari backend
 - [ ] Tombol "Beri Rating" hilang setelah berhasil submit atau terdeteksi sudah pernah diulas
-- [ ] List review per produk tampil di bawah setiap item (dari semua user) via `GET /api/reviews?product_id=X`
+- [ ] List review per produk tampil di bawah setiap item via `GET /api/reviews?product_id=X`
 - [ ] Nama reviewer + bintang + komentar ditampilkan per review
 
 **Alamat Pengiriman**
@@ -152,17 +154,12 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 
 **Product & UX**
 
-- [ ] `useInfiniteQuery` + infinite scroll — `GET /api/products` (auto-load via `onEndReached` di FlatList) + `GET /api/orders` (auto-load via `onScroll` di ScrollView); `limit:5`, `skip` per page, `getNextPageParam` dari `count`
-- [ ] Skeleton loading — shimmer placeholder (`Animated` + `expo-linear-gradient`) di HomeScreen (product grid 6 card), ProductDetailScreen (hero + konten), ProfileScreen Riwayat tab (4 row)
-- [ ] Average rating di ProductCard (⭐ 4.2 · count) dan ProductDetailScreen (5 bintang + avg + jumlah ulasan) dari field `avg_rating` + `review_count`
-- [ ] Search history — simpan pencarian terakhir ke `AsyncStorage` (maks 8), tampil saat search fokus + kosong; tap untuk isi ulang, hapus per item, hapus semua
-
-**Realtime & Notifikasi**
-
-- [ ] Notifikasi realtime (Pusher) — subscribe channel user, tampil toast/badge saat ada event baru
-- [ ] Expo Push Notifications — notif OS-level saat status order berubah, token management, background handler
+- [ ] Infinite scroll — `GET /api/products` + `GET /api/orders`; `limit:5`, `skip` per page
+- [ ] Skeleton loading — shimmer placeholder di HomeScreen (product grid), ProductDetailScreen, ProfileScreen Riwayat tab
+- [ ] Average rating di ProductCard (⭐ 4.2 · count) dan ProductDetailScreen (5 bintang + avg + jumlah ulasan)
+- [ ] Search history — simpan pencarian terakhir (maks 8), tampil saat search fokus + kosong; tap untuk isi ulang, hapus per item, hapus semua
 
 **Infrastruktur**
 
 - [ ] Deep linking — buka InvoiceScreen / ProductDetailScreen langsung dari notifikasi atau external link
-- [ ] Offline banner (`@react-native-community/netinfo`) — deteksi koneksi hilang, tampil banner, retry otomatis saat online kembali
+- [ ] Offline banner — deteksi koneksi hilang, tampil banner, retry otomatis saat online kembali
