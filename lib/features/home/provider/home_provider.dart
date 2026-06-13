@@ -78,11 +78,10 @@ class HomeState {
 }
 
 class HomeNotifier extends StateNotifier<HomeState> {
+  final HomeRepository _repo;
   HomeNotifier(this._repo) : super(const HomeState()) {
     _init();
   }
-
-  final HomeRepository _repo;
   Timer? _debounce;
 
   Future<void> _init() async {

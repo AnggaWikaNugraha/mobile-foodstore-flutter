@@ -30,7 +30,24 @@ Flutter mobile app for Foodstore.
 
 Base URL: `https://foodstore-server-nu.vercel.app`
 
-## Features
+## Feature
+
+### Home
+
+![Beranda](ss/beranda.png)
+
+- [x] Product list (grid 2 kolom)
+- [x] Search produk dengan debounce (500ms)
+- [x] Filter kategori
+- [x] Filter tags (multi-select)
+- [x] Banner carousel
+- [x] Header dengan cart badge + tombol Masuk & Daftar
+- [x] Badge "Sisa n" di product card saat stok ≤ 5
+- [x] Disable tombol "+" di product card kalau qty di cart sudah mencapai stok
+- [x] Skeleton loading (shimmer) saat produk loading
+- [x] Pagination (prev / next page)
+
+---
 
 ### 🚧 Coming Soon
 

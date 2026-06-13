@@ -224,21 +224,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   height: 1.3),
                             ),
                             const SizedBox(height: 10),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                b['btn'] as String,
-                                style: TextStyle(
-                                    color: colors.last,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
                           ],
                         ),
                       );
