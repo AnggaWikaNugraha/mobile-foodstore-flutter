@@ -34,7 +34,7 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 
 ### Home
 
-![Beranda](ss/beranda.png)
+<img src="ss/beranda.png" width="320"/>
 
 - [x] Product list (grid 2 kolom)
 - [x] Search produk dengan debounce (500ms)
