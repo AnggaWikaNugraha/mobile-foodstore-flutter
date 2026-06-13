@@ -1,34 +1,6 @@
 # Foodstore Mobile App
 
-Flutter mobile app for Foodstore.
-
-## Tech Stack
-
-| Kategori | Package |
-|---|---|
-| Framework | Flutter + Dart |
-| Navigation | go_router (+ deep linking) |
-| HTTP Client | dio + interceptor JWT |
-| State Management | flutter_riverpod (auth, cart, tema, wishlist) |
-| Form & Validasi | reactive_forms |
-| Storage (secure) | flutter_secure_storage (token) |
-| Storage (umum) | shared_preferences (search history, tema) |
-| Cache Gambar | cached_network_image |
-| Biometric | local_auth |
-| Google Sign-In | google_sign_in |
-| Image Picker | image_picker |
-| WebView (Midtrans) | webview_flutter |
-| Carousel | carousel_slider |
-| Skeleton/Shimmer | shimmer |
-| Infinite Scroll | infinite_scroll_pagination |
-| Realtime | pusher_channels_flutter |
-| Push Notifikasi | firebase_messaging + flutter_local_notifications |
-| Konektivitas | connectivity_plus |
-| Debounce | rxdart |
-
-## Backend
-
-Base URL: `https://foodstore-server-nu.vercel.app`
+A full-featured food e-commerce mobile application built with Flutter & Dart. Users can browse food products, search and filter by category or tag, add to cart, checkout with saved delivery address, pay via Midtrans, track order status in real-time, confirm delivery, and review purchased items. Supports biometric authentication, Google Sign-In, push notifications, and offline detection.
 
 ## Feature
 
@@ -180,3 +152,64 @@ Base URL: `https://foodstore-server-nu.vercel.app`
 
 - [ ] Deep linking — buka InvoiceScreen / ProductDetailScreen langsung dari notifikasi atau external link
 - [ ] Offline banner — deteksi koneksi hilang, tampil banner, retry otomatis saat online kembali
+
+## Project Structure
+
+```
+lib/
+├── core/
+│   ├── network/
+│   │   ├── dio_client.dart        # HTTP client singleton + BaseOptions
+│   │   └── log_interceptor.dart   # Request/response logger (debug only)
+│   ├── theme/
+│   │   ├── app_colors.dart        # Color tokens
+│   │   └── app_theme.dart         # ThemeData
+│   └── utils/
+│       └── image_url.dart         # Normalisasi URL gambar dari server
+├── features/
+│   ├── cart/
+│   │   └── provider/
+│   │       └── cart_provider.dart # State management keranjang
+│   └── home/
+│       ├── data/
+│       │   └── home_repository.dart  # Fetch products, categories, tags
+│       ├── model/
+│       │   ├── category.dart      # Model kategori
+│       │   ├── product.dart       # Model produk
+│       │   └── tag.dart           # Model tag
+│       ├── provider/
+│       │   └── home_provider.dart # HomeState + HomeNotifier
+│       └── screen/
+│           └── home_screen.dart   # UI beranda
+├── shared/
+│   └── widgets/
+│       └── product_card.dart      # Card produk (reusable)
+└── main.dart
+```
+## Tech Stack
+
+| Kategori | Package |
+|---|---|
+| Framework | Flutter + Dart |
+| Navigation | go_router (+ deep linking) |
+| HTTP Client | dio + interceptor JWT |
+| State Management | flutter_riverpod (auth, cart, tema, wishlist) |
+| Form & Validasi | reactive_forms |
+| Storage (secure) | flutter_secure_storage (token) |
+| Storage (umum) | shared_preferences (search history, tema) |
+| Cache Gambar | cached_network_image |
+| Biometric | local_auth |
+| Google Sign-In | google_sign_in |
+| Image Picker | image_picker |
+| WebView (Midtrans) | webview_flutter |
+| Carousel | carousel_slider |
+| Skeleton/Shimmer | shimmer |
+| Infinite Scroll | infinite_scroll_pagination |
+| Realtime | pusher_channels_flutter |
+| Push Notifikasi | firebase_messaging + flutter_local_notifications |
+| Konektivitas | connectivity_plus |
+| Debounce | rxdart |
+
+## Backend
+
+Base URL: `https://foodstore-server-nu.vercel.app`
